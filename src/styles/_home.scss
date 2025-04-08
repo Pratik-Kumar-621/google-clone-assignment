@@ -1,0 +1,12 @@
+@use "./variables";
+.home {
+  width: 100%;
+  max-width: 700px;
+  min-height: 100vh;
+  background-color: variables.$body_background;
+  margin: 0 auto;
+  color: white;
+  img {
+    height: 24px;
+  }
+}

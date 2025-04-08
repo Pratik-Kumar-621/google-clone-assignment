@@ -1,0 +1,15 @@
+@use "./mixins";
+@use "./variables";
+
+.login {
+  @include mixins.flexCenter;
+  min-height: 100vh;
+
+  button {
+    color: variables.$text_color !important;
+    background-color: variables.$button_color !important;
+    text-transform: capitalize !important;
+    font-weight: bold !important;
+    width: 150px !important;
+  }
+}
