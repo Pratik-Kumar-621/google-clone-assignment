@@ -150,6 +150,36 @@
   }
 }
 
+.drawer-bottom-content {
+  min-height: 240px;
+  background-color: #cedfec !important;
+  position: relative;
+  &-close {
+    position: absolute;
+    top: 5px;
+    font-size: 20px;
+    font-weight: bolder;
+    cursor: pointer;
+    left: 5px;
+    button {
+      color: rgb(0, 0, 0) !important;
+    }
+  }
+  &-heading {
+    text-align: center;
+    font-weight: 500;
+    font-size: 21px;
+    margin: 10px 0 0 0;
+  }
+  &-details {
+    text-align: center;
+    padding: 20px;
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 7px;
+  }
+}
+
 .dialog .MuiPaper-root {
   border-radius: 12px !important;
   background-color: #39393a;

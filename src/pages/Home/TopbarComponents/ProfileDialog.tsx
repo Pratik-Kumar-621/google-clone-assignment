@@ -181,7 +181,12 @@ const ProfileDialog = (props: dialogProps) => {
         }}
         className="drawer-bottom"
       >
-        <div className="drawer-bottom-content" style={{ minHeight: "60vh" }}>
+        <div className="drawer-bottom-content">
+          <div className="drawer-bottom-content-close">
+            <IconButton onClick={() => setDrawerBottom(false)}>
+              <CloseIcon />
+            </IconButton>
+          </div>
           <div className="drawer-bottom-content-heading">
             {drawerContent.name}
           </div>
