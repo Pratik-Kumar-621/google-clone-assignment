@@ -1,0 +1,156 @@
+@use "./mixins";
+
+.dialogprofile {
+  background-color: #39393a;
+  font-family: "Poppins" sans-serif !important;
+  color: white;
+  font-weight: 300;
+  position: relative;
+  &-close {
+    position: absolute;
+    top: 5px;
+    font-size: 20px;
+    font-weight: bolder;
+    cursor: pointer;
+    left: 5px;
+    button {
+      color: white !important;
+    }
+  }
+  &-heading {
+    text-align: center;
+    font-weight: 500;
+    font-size: 24px;
+    margin-top: 7px;
+  }
+  &-details {
+    margin: 30px 20px 0 20px;
+    &-user {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &-info {
+        display: flex;
+        align-items: center;
+        &-image {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          margin-right: 16px;
+        }
+        &-name {
+          font-size: 14px;
+          font-weight: 500;
+        }
+        &-email {
+          margin-top: 2px;
+          font-size: 12px;
+        }
+      }
+      &-button {
+        cursor: pointer;
+      }
+    }
+    &-button {
+      text-align: center;
+      margin: 10px auto 0 !important;
+      button {
+        @include mixins.buttonOutlined;
+        color: white !important;
+        padding-right: 15px;
+        padding-left: 15px;
+        border-radius: 20px !important;
+      }
+    }
+    &-accounts {
+      margin-top: 14px;
+
+      &-item {
+        margin-bottom: 14px;
+
+        display: flex;
+        &-image {
+          background-color: rgb(164, 169, 169);
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          margin-right: 16px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 20px;
+          font-weight: 400;
+        }
+        &-name {
+          font-size: 14px;
+          font-weight: 500;
+        }
+        &-email {
+          margin-top: 2px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  &-links {
+    border-top: 1px solid rgb(133, 132, 132);
+    border-bottom: 1px solid rgb(133, 132, 132);
+    &-item {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      &-icon {
+        height: 40px;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        scale: 0.7;
+      }
+      &-name {
+        font-size: 14px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+      &:hover {
+        background-color: #ffffff3a;
+      }
+      &:nth-child(1),
+      &:nth-child(3) {
+        border-bottom: 1px solid rgb(133, 132, 132);
+      }
+
+      &:nth-child(8) .dialogprofile-links-item-name {
+        border-bottom: 1px solid rgb(133, 132, 132);
+      }
+      &:nth-child(2) .dialogprofile-links-item-name {
+        border-bottom: 1px solid rgb(133, 132, 132);
+      }
+    }
+  }
+  &-footer {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    gap: 14px;
+    .seperator-footer {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: #ffffff;
+    }
+    &-item {
+      cursor: pointer;
+    }
+  }
+}
+
+.dialog .MuiPaper-root {
+  border-radius: 12px !important;
+  background-color: #39393a;
+}

@@ -8,18 +8,18 @@
   font-size: 14px !important;
   color: #767575 !important;
   border-color: #767575 !important;
-  cursor: not-allowed !important;
+
   font-weight: 500 !important;
-  text-transform: capitalize !important;
+  text-transform: none !important;
   height: 32px !important;
   border-radius: 7px !important;
 }
 @mixin buttonContained {
   font-size: 14px !important;
   background-color: #76a1e1 !important;
-  cursor: not-allowed !important;
+
   font-weight: 500 !important;
-  text-transform: capitalize !important;
+  text-transform: none !important;
   height: 32px !important;
   border-radius: 7px !important;
 }

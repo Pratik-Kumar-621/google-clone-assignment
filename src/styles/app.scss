@@ -1,6 +1,7 @@
 @use "./login";
 @use "./home";
 @use "./variables";
+@use "./profiledialog";
 body {
   background-color: variables.$background;
   margin: 0;
