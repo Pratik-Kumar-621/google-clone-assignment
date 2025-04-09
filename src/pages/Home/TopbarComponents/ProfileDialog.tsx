@@ -1,10 +1,10 @@
-import { Dialog, Button, Slide } from "@mui/material";
+import { Dialog, Button, Slide, Drawer } from "@mui/material";
 import { TransitionProps } from "@mui/material/transitions";
 import React, { useState } from "react";
-import { dummyAccounts } from "../../data/data";
-import { dummyAccountsType } from "../../data/types";
+import { dummyAccounts } from "../../../data/data";
+import { dummyAccountsType } from "../../../data/types";
 import ExpandCircleDownOutlinedIcon from "@mui/icons-material/ExpandCircleDownOutlined";
-import { accountSettingLinks } from "./homeData";
+import { accountSettingLinks } from "../homeData";
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
     children: React.ReactElement<any, any>;
@@ -22,7 +22,19 @@ interface dialogProps {
 
 const ProfileDialog = (props: dialogProps) => {
   const { open, handleClose, userDetails } = props;
+  const [drawerBottom, setDrawerBottom] = useState(false);
   const [showAccounts, setShowAccounts] = useState(false);
+  const [drawerContent, setDrawerContent] = useState<any>({
+    name: accountSettingLinks[0].text,
+    description: accountSettingLinks[0].description,
+  });
+  const handleDrawerOpen = (item: any) => {
+    setDrawerContent({
+      name: item.text,
+      description: item.description,
+    });
+    setDrawerBottom(true);
+  };
   return (
     <Dialog
       open={open}
@@ -57,7 +69,17 @@ const ProfileDialog = (props: dialogProps) => {
               <ExpandCircleDownOutlinedIcon />
             </div>
           </div>
-          <Button variant="outlined" className="dialog-content-details-button">
+          <Button
+            variant="outlined"
+            className="dialog-content-details-button"
+            onClick={() =>
+              handleDrawerOpen({
+                text: "Manage your Google Account",
+                description:
+                  "Manage your Google Account settings, privacy options, and personalization preferences.",
+              })
+            }
+          >
             Manage your Google Account
           </Button>
           <div
@@ -85,7 +107,11 @@ const ProfileDialog = (props: dialogProps) => {
         <div className="dialog-content-links">
           {accountSettingLinks.map((item: any) => {
             return (
-              <div className="dialog-content-links-item">
+              <div
+                className="dialog-content-links-item"
+                key={item.id}
+                onClick={() => handleDrawerOpen(item)}
+              >
                 <div className="dialog-content-links-item-icon">
                   {item.children}
                 </div>
@@ -102,6 +128,34 @@ const ProfileDialog = (props: dialogProps) => {
           <div className="dialog-content-footer-item">Terms and Conditions</div>
         </div>
       </div>
+      <Drawer
+        anchor="bottom"
+        open={drawerBottom}
+        onClose={() => setDrawerBottom(false)}
+        PaperProps={{
+          sx: {
+            width: "auto",
+            maxWidth: "700px",
+            margin: "0 auto",
+            borderRadius: "12px 12px 0 0",
+          },
+        }}
+        ModalProps={{
+          keepMounted: true,
+          container: document.body, // you can customize this
+          disablePortal: true, // important: keep it in dialog hierarchy
+        }}
+        className="drawer-bottom"
+      >
+        <div className="drawer-bottom-content" style={{ minHeight: "60vh" }}>
+          <div className="drawer-bottom-content-heading">
+            {drawerContent.name}
+          </div>
+          <div className="drawer-bottom-content-details">
+            {drawerContent.description}
+          </div>
+        </div>
+      </Drawer>
     </Dialog>
   );
 };

@@ -1,4 +1,5 @@
 @use "./variables";
+@use "./mixins";
 .home {
   width: 100%;
   max-width: 700px;
@@ -6,7 +7,98 @@
   background-color: variables.$body_background;
   margin: 0 auto;
   color: white;
-  img {
-    height: 24px;
+  &-topbar {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-logout {
+      margin-left: -10px;
+      svg {
+        color: rgb(254, 254, 254) !important;
+      }
+    }
+    &-tabs {
+      display: flex;
+      align-items: center;
+      background-color: rgb(49, 49, 49);
+      padding: 5px;
+      border-radius: 7px;
+      &-item {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        font-weight: 500;
+        gap: 5px;
+
+        height: 30px;
+        padding: 0 7px;
+        border-radius: 7px;
+        img {
+          width: 100%;
+          height: 20px;
+        }
+        &:nth-child(2) {
+          padding: 0;
+          img {
+            height: 25px;
+          }
+        }
+        cursor: pointer;
+      }
+      &-active {
+        background-color: black;
+      }
+    }
+    &-profile {
+      display: flex;
+      width: 32px;
+      img {
+        width: 100%;
+        border-radius: 50%;
+      }
+    }
   }
+}
+
+.logout-dialog {
+  padding: 20px;
+
+  &-heading {
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  &-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    .submit-dialog {
+      @include mixins.buttonContained;
+      background-color: rgb(244, 108, 108) !important;
+    }
+    .cancel-dialog {
+      @include mixins.buttonOutlined;
+    }
+  }
+}
+
+img {
+  width: 40px;
+}
+.dialog-content-details-accounts {
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
+}
+
+.accounts-hide {
+  opacity: 0;
+  transform: translateY(-10px);
+  max-height: 0;
+}
+.accounts-show {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 500px;
 }

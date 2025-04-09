@@ -1,5 +1,18 @@
+import NewsPage from "./SearchTabComponents/News";
+import SearchBar from "./SearchTabComponents/SearchBar";
+import WeatherInfo from "./SearchTabComponents/WeatherInfo";
+import Widgets from "./SearchTabComponents/Widgets";
+
 const SearchTab = () => {
-  return <div>SearchTab</div>;
+  return (
+    <div>
+      <SearchBar />
+      <Widgets />
+      <hr />
+      <WeatherInfo />
+      <NewsPage />
+    </div>
+  );
 };
 
 export default SearchTab;
