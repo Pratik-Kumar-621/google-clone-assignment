@@ -2,12 +2,13 @@ import { searchIcons } from "../homeData";
 
 const Widgets = () => {
   return (
-    <div>
+    <div className="widgets">
       {searchIcons.map((item) => {
         return (
           <div
+            className="widgets-item"
             key={item.name}
-            style={{ width: "40px", height: "40px", background: item.color }}
+            style={{ background: item.color }}
           >
             {item.icon}
           </div>

@@ -1,5 +1,6 @@
-import { Drawer } from "@mui/material";
+import { Drawer, IconButton } from "@mui/material";
 import { newsData } from "../homeData";
+import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 
 const NewsPage = () => {
@@ -32,13 +33,18 @@ const NewsPage = () => {
             key={item.id}
             onClick={() => handleDrawerOpen(item)}
           >
-            <img className="news-image" src={item.imageUrl} alt={item.title} />
-            <div className="news-description">{item.description}</div>
-            <div className="news-date">
-              Date: <strong>{item.publishedAt.split("T")[0]}</strong>
-            </div>
-            <div className="news-publisher">
-              Published by: <strong>{item.source}</strong>
+            <img
+              className="news-item-image"
+              src={item.imageUrl}
+              alt={item.title}
+            />
+            <div className="news-item-description">{item.description}</div>
+            <div className="news-item-list">
+              <div className="news-item-publisher">{item.source}</div>
+              <div className="news-item-seperator"></div>
+              <div className="news-item-date">
+                {item.publishedAt.split("T")[0]}
+              </div>
             </div>
           </div>
         );
@@ -57,22 +63,28 @@ const NewsPage = () => {
         }}
         className="drawer-news-bottom"
       >
-        <div className="drawer-news-bottom-content" style={{ height: "80vh" }}>
+        <div className="drawer-news-bottom-content">
+          <div className="drawer-news-bottom-content-close">
+            <IconButton onClick={() => setDrawerBottom(false)}>
+              <CloseIcon />
+            </IconButton>
+          </div>
           <div className="drawer-news-bottom-content-heading">
             {drawerContent.title}
           </div>
           <div className="drawer-news-bottom-content-list">
-            <ul>
-              <li>{drawerContent.category}</li>
-              <li>{drawerContent.publishedAt.split("T")[0]}</li>
-            </ul>
+            <div className="drawer-news-bottom-content-source">
+              {drawerContent.source}
+            </div>
+            <div className="drawer-news-bottom-content-seperator"></div>
+            <div>{drawerContent.category}</div>
+            <div className="drawer-news-bottom-content-seperator"></div>
+            <div>{drawerContent.publishedAt.split("T")[0]}</div>
           </div>
           <div className="drawer-news-bottom-content-image">
             <img src={drawerContent.image} alt={drawerContent.title} />
           </div>
-          <div className="drawer-news-bottom-content-source">
-            {drawerContent.source}
-          </div>
+
           <div className="drawer-news-bottom-content-description">
             {drawerContent.description} Lorem ipsum, dolor sit amet consectetur
             adipisicing elit. Possimus, ipsam odit? Saepe sit, ipsa ab quisquam

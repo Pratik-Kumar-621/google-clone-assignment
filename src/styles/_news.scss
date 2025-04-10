@@ -1,0 +1,144 @@
+.widgets {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 10px;
+  &-item {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    border-radius: 30px;
+    align-items: center;
+    font-size: 10px !important;
+  }
+}
+
+.weather {
+  border-top: 1px solid rgb(133, 132, 132);
+  display: flex;
+  padding: 10px 20px;
+  gap: 10px;
+  overflow-x: scroll;
+  justify-content: center;
+  &-item {
+    padding: 7px 15px;
+    border-radius: 14px;
+    min-width: 110px;
+    border: 1px solid rgb(133, 132, 132);
+    &-title {
+      font-size: 12px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    &-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+.news {
+  &-loading {
+    margin: 20px;
+    text-align: center;
+  }
+  &-item {
+    border-bottom: 1px solid rgb(133, 132, 132);
+    margin: 0 20px 20px 20px;
+    padding-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border-radius: 16px 16px 0 0;
+    &-image {
+      width: 100%;
+      height: 240px;
+      border-radius: 14px;
+    }
+    &-description {
+      font-size: 16px;
+      font-weight: 300;
+    }
+    &-list {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    &-seperator {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: #ffffff;
+    }
+
+    &-date,
+    &-publisher {
+      font-size: 12px;
+    }
+  }
+}
+@media all and (min-width: 550px) {
+  .news {
+    &-loading {
+    }
+    &-item {
+      &-image {
+        height: 340px;
+      }
+    }
+  }
+}
+
+.drawer-news-bottom-content {
+  height: 70vh;
+  background-color: #ecf6fd !important;
+  position: relative;
+  &-close {
+    position: absolute;
+    top: 1px;
+    font-size: 20px;
+    font-weight: bolder;
+    cursor: pointer;
+    left: 1px;
+    button {
+      color: rgb(0, 0, 0) !important;
+    }
+  }
+  &-heading {
+    text-align: center;
+    font-weight: 500;
+    font-size: 21px;
+    margin: 10px 0 0 0;
+    padding: 0 30px;
+  }
+  &-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  &-seperator {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #000000;
+  }
+  &-image {
+    padding: 10px 10px 20px;
+    img {
+      width: 100%;
+    }
+  }
+  &-description {
+    padding: 10px 10px 30px;
+    text-align: justify;
+  }
+}

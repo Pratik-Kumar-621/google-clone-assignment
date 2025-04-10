@@ -8,7 +8,6 @@ const SearchTab = () => {
     <div>
       <SearchBar />
       <Widgets />
-      <hr />
       <WeatherInfo />
       <NewsPage />
     </div>

@@ -92,22 +92,22 @@ export const accountSettingLinks = [
 export const searchIcons = [
   {
     name: "Image Search",
-    icon: <ImageSearchIcon />,
+    icon: <ImageSearchIcon sx={{ fontSize: "18px" }} />,
     color: "#8E6E35",
   },
   {
     name: "Translate",
-    icon: <TranslateIcon />,
+    icon: <TranslateIcon sx={{ fontSize: "18px" }} />,
     color: "#485B8D",
   },
   {
-    name: "Education",
-    icon: <SchoolIcon />,
+    name: "Homework",
+    icon: <SchoolIcon sx={{ fontSize: "18px" }} />,
     color: "#4B5E48",
   },
   {
     name: "Music",
-    icon: <MusicNoteIcon />,
+    icon: <MusicNoteIcon sx={{ fontSize: "18px" }} />,
     color: "#713B3B",
   },
 ];
@@ -159,7 +159,7 @@ export const newsData = [
     source: "Bloomberg",
     publishedAt: "2025-04-09T10:28:21.063323Z",
     imageUrl:
-      "https://plus.unsplash.com/premium_photo-1688561384438-bfa9273e2c00?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://www.pewresearch.org/wp-content/uploads/sites/8/2016/07/PJ_2016.07.07_Modern-News-Consumer_0-01.png",
     category: "Finance",
   },
   {
@@ -170,7 +170,7 @@ export const newsData = [
     source: "NASA News",
     publishedAt: "2025-04-09T09:28:21.063331Z",
     imageUrl:
-      "https://plus.unsplash.com/premium_photo-1688561384438-bfa9273e2c00?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://www.pewresearch.org/wp-content/uploads/sites/8/2016/07/PJ_2016.07.07_Modern-News-Consumer_0-01.png",
     category: "Science",
   },
   {
@@ -192,7 +192,7 @@ export const newsData = [
     source: "The Guardian",
     publishedAt: "2025-04-09T07:28:21.063345Z",
     imageUrl:
-      "https://plus.unsplash.com/premium_photo-1688561384438-bfa9273e2c00?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK7BMVuL2Wns89zQoSzrf7U4zgySo9LM0I0g&s",
     category: "Health",
   },
   {
@@ -203,7 +203,7 @@ export const newsData = [
     source: "BBC News",
     publishedAt: "2025-04-09T06:28:21.063351Z",
     imageUrl:
-      "https://plus.unsplash.com/premium_photo-1688561384438-bfa9273e2c00?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://www.pewresearch.org/wp-content/uploads/sites/8/2016/07/PJ_2016.07.07_Modern-News-Consumer_0-01.png",
     category: "Sports",
   },
   {
@@ -214,7 +214,7 @@ export const newsData = [
     source: "ESPN",
     publishedAt: "2025-04-09T05:28:21.063358Z",
     imageUrl:
-      "https://plus.unsplash.com/premium_photo-1688561384438-bfa9273e2c00?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK7BMVuL2Wns89zQoSzrf7U4zgySo9LM0I0g&s",
     category: "Entertainment",
   },
   {
