@@ -1,7 +1,7 @@
-import { Drawer, IconButton } from "@mui/material";
+import { CircularProgress, Drawer, IconButton } from "@mui/material";
 import { newsData } from "../homeData";
 import CloseIcon from "@mui/icons-material/Close";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const NewsPage = () => {
   const [drawerBottom, setDrawerBottom] = useState(false);
@@ -13,6 +13,8 @@ const NewsPage = () => {
     publishedAt: "",
     category: "",
   });
+  const [loading, setLoading] = useState(true);
+  const [visibleNewsCount, setVisibleNewsCount] = useState(6);
   const handleDrawerOpen = (item: any) => {
     setDrawerContent({
       title: item.title,
@@ -24,9 +26,31 @@ const NewsPage = () => {
     });
     setDrawerBottom(true);
   };
+
+  const handleScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop >=
+        document.documentElement.offsetHeight &&
+      visibleNewsCount < newsData.length
+    ) {
+      setLoading(true);
+      setTimeout(() => {
+        setVisibleNewsCount((prevCount) => prevCount + 6);
+        setLoading(false);
+      }, 500);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="news">
-      {newsData.map((item) => {
+      {newsData.slice(0, visibleNewsCount).map((item) => {
         return (
           <div
             className="news-item"
@@ -49,6 +73,11 @@ const NewsPage = () => {
           </div>
         );
       })}
+      {loading && (
+        <div className="news-loading">
+          <CircularProgress />
+        </div>
+      )}
       <Drawer
         anchor="bottom"
         open={drawerBottom}
