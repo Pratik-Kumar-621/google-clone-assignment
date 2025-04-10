@@ -96,6 +96,7 @@
 
 .drawer-news-bottom-content {
   height: 70vh;
+  overflow: auto;
   background-color: #ecf6fd !important;
   position: relative;
   &-close {
@@ -138,7 +139,8 @@
     }
   }
   &-description {
-    padding: 10px 10px 30px;
+    padding: 10px 0;
     text-align: justify;
+    margin-bottom: 30px;
   }
 }
