@@ -2,6 +2,7 @@
 @use "./home";
 @use "./variables";
 @use "./profiledialog";
+@use "./search";
 body {
   background-color: variables.$background;
   margin: 0;

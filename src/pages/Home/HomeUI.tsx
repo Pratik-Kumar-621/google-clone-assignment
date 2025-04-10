@@ -15,10 +15,7 @@ const HomeUI = (props: any) => {
     <div className="home">
       <TopBar {...{ tab, logout, setTab, userDetails, setOpen }} />
       {tab === "search" ? <SearchTab /> : <GeminiTab />}
-      <div className="home-search">
-        <div className="home-search-heading"></div>
-        <div className="home-search-input"></div>
-      </div>
+
       <ProfileDialog {...{ open, handleClose, userDetails }} />
     </div>
   );
