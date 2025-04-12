@@ -56,5 +56,3 @@ export const router = createBrowserRouter([
     element: <Navigate to="/" replace />,
   },
 ]);
-
-export const rewrites = [{ source: "/(.*)", destination: "/" }];
