@@ -1,11 +1,26 @@
-import { Drawer } from "@mui/material";
+import { SwipeableDrawer } from "@mui/material";
 
 const LensDialog = (props: any) => {
-  const { openLens, handleCloseLens } = props;
+  const { openLens, handleOpenLens, handleCloseLens } = props;
   return (
-    <Drawer open={openLens} onClose={handleCloseLens} anchor="bottom">
-      Lens drawer
-    </Drawer>
+    <SwipeableDrawer
+      open={openLens}
+      onOpen={handleOpenLens}
+      onClose={handleCloseLens}
+      anchor="bottom"
+      PaperProps={{
+        sx: {
+          width: "auto",
+          maxWidth: "700px",
+          margin: "0 auto",
+        },
+      }}
+    >
+      <div className="imagesearch-drawer">
+        <button onClick={handleCloseLens}>Close</button>
+        Lens SwipeableDrawer
+      </div>
+    </SwipeableDrawer>
   );
 };
 

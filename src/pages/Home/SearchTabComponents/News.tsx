@@ -1,4 +1,4 @@
-import { Drawer, IconButton } from "@mui/material";
+import { SwipeableDrawer, IconButton } from "@mui/material";
 import { newsData } from "../homeData";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
@@ -52,9 +52,10 @@ const NewsPage = () => {
         );
       })}
 
-      <Drawer
+      <SwipeableDrawer
         anchor="bottom"
         open={drawerBottom}
+        onOpen={() => setDrawerBottom(true)}
         onClose={() => setDrawerBottom(false)}
         PaperProps={{
           sx: {
@@ -115,7 +116,7 @@ const NewsPage = () => {
             temporibus ad impedit quasi eum nisi.
           </div>
         </div>
-      </Drawer>
+      </SwipeableDrawer>
     </div>
   );
 };

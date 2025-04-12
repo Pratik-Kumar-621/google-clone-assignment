@@ -1,4 +1,5 @@
 @use "./mixins";
+@use "./variables";
 
 .searchbar {
   &-heading {
@@ -31,5 +32,106 @@
         color: white !important;
       }
     }
+  }
+}
+
+.textsearch-drawer,
+.imagesearch-drawer,
+.voicesearch-drawer {
+  height: 100vh;
+  overflow: auto;
+  color: white;
+  padding-bottom: 20px;
+  background: variables.$background;
+}
+
+.textsearch-drawer {
+  &-input {
+    margin: 15px;
+    position: relative;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    input {
+      position: relative;
+      background: rgb(67, 67, 67);
+      width: 100%;
+      height: 50px;
+      color: white;
+      outline: none !important;
+      border-radius: 30px;
+      border: none !important;
+      padding-left: 45px;
+      font-size: 21px;
+      z-index: 1;
+    }
+    &-back,
+    &-buttons {
+      position: absolute !important;
+      background-color: transparent !important;
+      z-index: 3;
+    }
+    &-back {
+      left: 3px;
+      color: white !important;
+    }
+    &-buttons {
+      right: 10px;
+      button {
+        color: white !important;
+      }
+    }
+  }
+  &-history,
+  &-trending,
+  &-results {
+    &-header {
+      margin: 10px 15px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgb(176, 176, 176);
+      &-title {
+        font-size: 14px;
+        font-weight: 300;
+      }
+      &-manage {
+        font-weight: 400 !important;
+        padding: 0 !important;
+        font-size: 14px !important;
+      }
+    }
+    &-list {
+      margin-top: 10px;
+
+      &-item {
+        padding: 5px 15px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-size: 18px;
+        font-weight: 300;
+        cursor: pointer;
+        &:hover {
+          background-color: #4b4c4d;
+        }
+      }
+      span {
+        display: block;
+        background: rgb(67, 67, 67);
+        height: 30px;
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+.MuiDrawer-root {
+  .MuiPaper-root {
+    background-color: transparent !important;
   }
 }

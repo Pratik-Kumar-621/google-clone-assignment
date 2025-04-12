@@ -94,21 +94,25 @@ export const searchIcons = [
     name: "Image Search",
     icon: <ImageSearchIcon sx={{ fontSize: "18px" }} />,
     color: "#8E6E35",
+    open: "image",
   },
   {
     name: "Translate",
     icon: <TranslateIcon sx={{ fontSize: "18px" }} />,
     color: "#485B8D",
+    open: "image",
   },
   {
     name: "Homework",
     icon: <SchoolIcon sx={{ fontSize: "18px" }} />,
     color: "#4B5E48",
+    open: "image",
   },
   {
     name: "Music",
     icon: <MusicNoteIcon sx={{ fontSize: "18px" }} />,
     color: "#713B3B",
+    open: "voice",
   },
 ];
 
@@ -253,4 +257,17 @@ export const newsData = [
     publishedAt: "2025-04-09T00:07:18.0327035Z",
     category: "General",
   },
+];
+
+export const trendingSearches = [
+  "React tutorial",
+  "JavaScript tips",
+  "Firebase authentication",
+  "CSS animations",
+  "Next.js guide",
+  "TypeScript basics",
+  "Node.js performance",
+  "GraphQL vs REST",
+  "Tailwind CSS examples",
+  "AI in web development",
 ];

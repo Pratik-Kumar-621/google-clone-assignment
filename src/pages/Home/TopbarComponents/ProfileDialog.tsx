@@ -1,4 +1,10 @@
-import { Dialog, Button, Slide, Drawer, IconButton } from "@mui/material";
+import {
+  Dialog,
+  Button,
+  Slide,
+  IconButton,
+  SwipeableDrawer,
+} from "@mui/material";
 import { TransitionProps } from "@mui/material/transitions";
 import React, { useState } from "react";
 import { dummyAccounts } from "../../../data/data";
@@ -162,9 +168,10 @@ const ProfileDialog = (props: dialogProps) => {
           </div>
         </div>
       </div>
-      <Drawer
+      <SwipeableDrawer
         anchor="bottom"
         open={drawerBottom}
+        onOpen={() => setDrawerBottom(true)}
         onClose={() => setDrawerBottom(false)}
         PaperProps={{
           sx: {
@@ -194,7 +201,7 @@ const ProfileDialog = (props: dialogProps) => {
             {drawerContent.description}
           </div>
         </div>
-      </Drawer>
+      </SwipeableDrawer>
     </Dialog>
   );
 };

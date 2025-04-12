@@ -1,4 +1,3 @@
-import { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import MicIcon from "@mui/icons-material/Mic";
 import CenterFocusWeakOutlinedIcon from "@mui/icons-material/CenterFocusWeakOutlined";
@@ -6,17 +5,31 @@ import { IconButton } from "@mui/material";
 import SearchDialog from "./SearchDialog";
 import VoiceDialog from "./VoiceDialog";
 import LensDialog from "./LensDialog";
-const SearchBar = () => {
-  const [openSearch, setOpenSearch] = useState(false);
-  const [openVoice, setOpenVoice] = useState(false);
-  const [openLens, setOpenLens] = useState(false);
+const SearchBar = (props: {
+  openSearch: boolean;
+  openVoice: boolean;
+  openLens: boolean;
+  setOpenSearch: (value: boolean) => void;
+  setOpenVoice: (value: boolean) => void;
+  setOpenLens: (value: boolean) => void;
+}) => {
+  const {
+    openSearch,
+    openVoice,
+    openLens,
+    setOpenSearch,
+    setOpenVoice,
+    setOpenLens,
+  } = props;
   const handleOpenSearch = () => {
     setOpenSearch(true);
   };
   const handleOpenVoice = () => {
+    setOpenSearch(false);
     setOpenVoice(true);
   };
   const handleOpenLens = () => {
+    setOpenSearch(false);
     setOpenLens(true);
   };
 
@@ -52,11 +65,16 @@ const SearchBar = () => {
         </div>
       </div>
       <SearchDialog
-        {...{ openSearch, handleCloseSearch }}
-        onClick={handleOpenVoice}
+        {...{
+          openSearch,
+          handleCloseSearch,
+          handleOpenSearch,
+          handleOpenVoice,
+          handleOpenLens,
+        }}
       />
-      <VoiceDialog {...{ openVoice, handleCloseVoice }} />
-      <LensDialog {...{ openLens, handleCloseLens }} />
+      <VoiceDialog {...{ openVoice, handleCloseVoice, handleOpenVoice }} />
+      <LensDialog {...{ openLens, handleCloseLens, handleOpenLens }} />
     </div>
   );
 };
