@@ -3,6 +3,7 @@
 @use "./variables";
 @use "./profiledialog";
 @use "./search";
+@use "./result";
 body {
   background-color: variables.$background;
   margin: 0;

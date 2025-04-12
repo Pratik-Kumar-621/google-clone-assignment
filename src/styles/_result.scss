@@ -1,0 +1,191 @@
+@use "./variables";
+
+.searchresult {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: variables.$body_background;
+  color: white;
+  min-height: 100vh;
+  .home-topbar {
+    background-color: transparent !important;
+    z-index: 2;
+    &-name {
+      font-size: 32px;
+      color: white;
+    }
+  }
+  .searchbar {
+    margin-top: -62px;
+
+    &-heading {
+      font-size: 32px;
+    }
+    &-button {
+      margin-top: -10px;
+    }
+  }
+  &-tabs {
+    margin: 10px 20px;
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    border-bottom: 0.5px solid rgb(131, 131, 131);
+    &-item {
+      color: rgb(131, 131, 131);
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    &-active {
+      color: white;
+      border-bottom: 1px solid white;
+    }
+  }
+  &-placeholder {
+    padding: 20px;
+    &-heading {
+      font-size: 30px;
+    }
+  }
+  &-content {
+    &-all {
+      padding: 0 20px 20px;
+      &-head {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        margin-bottom: 20px;
+      }
+      &-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        &-item {
+          padding-bottom: 15px;
+          border-bottom: 0.5px solid rgb(131, 131, 131);
+          &-top {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            &-image {
+              width: 36px;
+              height: 36px;
+              display: flex;
+              border-radius: 50%;
+              justify-content: center;
+              align-items: center;
+              font-size: 20px;
+              font-weight: bold;
+              background-color: rgb(117, 145, 148);
+            }
+            &-content {
+              &-link {
+                font-size: 12px;
+              }
+            }
+          }
+          &-bottom {
+            &-heading {
+              font-size: 21px;
+              color: rgb(106, 106, 184);
+              margin-bottom: 5px;
+            }
+            &-description {
+              font-size: 14px;
+              text-align: justify;
+            }
+          }
+        }
+      }
+    }
+    &-images {
+      padding: 0 20px 20px;
+      &-head {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        margin-bottom: 20px;
+      }
+      &-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+        &-item {
+          padding: 10px;
+          border: 0.5px solid rgb(131, 131, 131);
+          border-radius: 7px;
+          img {
+            width: 100%;
+            border-radius: 4px;
+          }
+          &-name {
+            font-size: 15px;
+            padding: 2px 0;
+          }
+          &-description {
+            font-size: 12px;
+            font-weight: 300;
+            text-align: justify;
+            margin-bottom: 5px;
+          }
+        }
+      }
+    }
+    &-news {
+      padding: 0 20px 20px;
+      &-head {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        margin-bottom: 20px;
+      }
+      &-list {
+        &-item {
+          cursor: pointer;
+          padding: 10px;
+          border: 0.5px solid rgb(131, 131, 131);
+          border-radius: 7px;
+          margin-bottom: 10px;
+          display: grid;
+          grid-template-columns: 1.5fr 1fr;
+          &-content {
+            &-head {
+              &-image {
+                width: 24px;
+                height: 24px;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 12px;
+                border-radius: 4px;
+                text-transform: capitalize;
+                background: #994baf;
+              }
+              &-title {
+                display: inline-block;
+                margin-left: 5px;
+                font-size: 14px;
+              }
+            }
+            &-description {
+              font-size: 14px;
+              padding: 5px 0;
+            }
+            &-date {
+              font-size: 12px;
+              font-weight: bold;
+            }
+          }
+          &-image {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            img {
+              width: 100%;
+              border-radius: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

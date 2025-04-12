@@ -5,6 +5,7 @@ import { IconButton } from "@mui/material";
 import SearchDialog from "./SearchDialog";
 import VoiceDialog from "./VoiceDialog";
 import LensDialog from "./LensDialog";
+import { useParams } from "react-router-dom";
 const SearchBar = (props: {
   openSearch: boolean;
   openVoice: boolean;
@@ -13,6 +14,11 @@ const SearchBar = (props: {
   setOpenVoice: (value: boolean) => void;
   setOpenLens: (value: boolean) => void;
 }) => {
+  const path = window.location.pathname;
+  const params = useParams();
+  const { query } = params;
+  const isSearchPage = path.includes("/search");
+
   const {
     openSearch,
     openVoice,
@@ -47,7 +53,22 @@ const SearchBar = (props: {
       <div className="searchbar-heading">Google</div>
       <div className="searchbar-button">
         <div className="searchbar-button-button" onClick={handleOpenSearch}>
-          <SearchIcon /> Search
+          <SearchIcon />
+          <span
+            style={{
+              color: isSearchPage ? "#c6c6c9" : "#858586",
+            }}
+          >
+            <>
+              {query ? (
+                <>
+                  {query.length > 20 ? `${query.substring(0, 20)}...` : query}
+                </>
+              ) : (
+                "Search Google"
+              )}
+            </>
+          </span>
         </div>
         <div className="searchbar-button-icons">
           <IconButton

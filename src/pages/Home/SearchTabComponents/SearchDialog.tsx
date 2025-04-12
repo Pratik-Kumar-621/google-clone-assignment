@@ -1,13 +1,13 @@
-import { Button, IconButton, SwipeableDrawer } from "@mui/material";
+import { Button, SwipeableDrawer } from "@mui/material";
 import { useState, useEffect } from "react";
 import searchSuggestions from "../searchSuggestions";
 import { trendingSearches } from "../homeData";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import MicIcon from "@mui/icons-material/Mic";
-import CenterFocusWeakOutlinedIcon from "@mui/icons-material/CenterFocusWeakOutlined";
+
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import SearchIcon from "@mui/icons-material/Search";
+import { useNavigate, useParams } from "react-router-dom";
+import SearchInput from "./SearchInput";
 interface SearchDialogProps {
   openSearch: boolean;
   handleOpenSearch: () => void;
@@ -24,7 +24,11 @@ const SearchDialog = (props: SearchDialogProps) => {
     handleOpenVoice,
     handleOpenLens,
   } = props;
-  const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
+  const params = useParams();
+  const { query } = params;
+
+  const [searchInput, setSearchInput] = useState(query || "");
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const [filteredSearches, setFilteredSearches] = useState<string[]>([]);
   const [matchingSuggestions, setMatchingSuggestions] = useState<
@@ -83,14 +87,10 @@ const SearchDialog = (props: SearchDialogProps) => {
   };
 
   const handleSearchSubmit = (item: string) => {
-    // if (item.trim() !== "") {
-    //   saveSearch(item.trim());
-    //   setSearchInput("");
-    // }
-    // console.log(item);
-    // console.log("submitted");
-    // handleCloseSearch();
-    console.log(item);
+    saveSearch(item);
+    setSearchInput(item);
+    navigate(`/search/${item}`);
+    handleCloseSearch();
   };
 
   const handleDeleteRecentSearches = () => {
@@ -119,37 +119,17 @@ const SearchDialog = (props: SearchDialogProps) => {
       }}
     >
       <div className="textsearch-drawer">
-        <div className="textsearch-drawer-input">
-          <IconButton
-            className="textsearch-drawer-input-back"
-            onClick={handleCloseSearch}
-          >
-            <ArrowBackIcon sx={{ fontSize: "24px" }} />
-          </IconButton>
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchInput}
-            onChange={handleSearchChange}
-            onKeyDown={(e) =>
-              e.key === "Enter" && handleSearchSubmit(searchInput)
-            }
-          />
-          <div className="textsearch-drawer-input-buttons">
-            <IconButton
-              className="textsearch-drawer-input-buttons-mic"
-              onClick={handleOpenVoice}
-            >
-              <MicIcon />
-            </IconButton>
-            <IconButton
-              className="textsearch-drawer-input-buttons-lens"
-              onClick={handleOpenLens}
-            >
-              <CenterFocusWeakOutlinedIcon />
-            </IconButton>
-          </div>
-        </div>
+        <SearchInput
+          handleBack={handleCloseSearch}
+          {...{
+            searchInput,
+            handleSearchChange,
+            handleSearchSubmit,
+            handleOpenVoice,
+            handleOpenLens,
+          }}
+        />
+
         <div style={{ marginTop: "80px" }}></div>
         <div className="textsearch-drawer-history">
           {!searchInput && recentSearches.length > 0 && (

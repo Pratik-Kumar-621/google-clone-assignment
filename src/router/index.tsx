@@ -6,11 +6,11 @@ import SearchResults from "../pages/SearchResults";
 
 // Protected Route wrapper component
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  // const { user, authLoading } = useAuth();
+  const { user, authLoading } = useAuth();
 
-  // if (!user && !authLoading) {
-  //   return <Navigate to="/login" replace />;
-  // }
+  if (!user && !authLoading) {
+    return <Navigate to="/login" replace />;
+  }
 
   return <>{children}</>;
 };
@@ -44,7 +44,7 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: "/search",
+    path: "/search/:query",
     element: (
       <ProtectedRoute>
         <SearchResults />
