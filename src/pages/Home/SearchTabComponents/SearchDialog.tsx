@@ -150,7 +150,7 @@ const SearchDialog = (props: SearchDialogProps) => {
             </IconButton>
           </div>
         </div>
-
+        <div style={{ marginTop: "80px" }}></div>
         <div className="textsearch-drawer-history">
           {!searchInput && recentSearches.length > 0 && (
             <>
