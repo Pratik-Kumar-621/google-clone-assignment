@@ -1,7 +1,8 @@
 import InfoOutlineIcon from "@mui/icons-material/InfoOutline";
 import { IconButton, SwipeableDrawer } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 const searchResults = [
   {
     heading: "Understanding React",
@@ -78,13 +79,23 @@ const AllResultsTab = (props: any) => {
   const { query } = props;
   const [open, setOpen] = useState(false);
   const [selectedResult, setSelectedResult] = useState<any>();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const image = location.state?.image;
+
+  useEffect(() => {
+    if (query?.startsWith("image_result") && !image) {
+      navigate("/", { replace: true });
+    }
+  }, [image, navigate]);
+
   return (
     <div className="searchresult-content-all">
       <div
         className="searchresult-content-all-head"
         style={{
-          flexDirection: query?.startsWith("data:image/") ? "column" : "row",
-          alignItems: query?.startsWith("data:image/")
+          flexDirection: query?.startsWith("image_result") ? "column" : "row",
+          alignItems: query?.startsWith("image_result")
             ? "flex-start"
             : "center",
         }}
@@ -93,10 +104,10 @@ const AllResultsTab = (props: any) => {
           <InfoOutlineIcon /> Search results for:{" "}
         </div>
         <div className="searchresult-content-all-head-content">
-          {query?.startsWith("data:image/") ? (
+          {query?.startsWith("image_result") ? (
             <>
               <br />
-              <img src={query} />
+              <img src={image} />
             </>
           ) : (
             query

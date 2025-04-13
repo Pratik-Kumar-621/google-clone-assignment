@@ -89,8 +89,10 @@ const CustomCameraCapture = ({
   };
 
   const handleSubmit = () => {
-    const safeImage = encodeURIComponent(imageDataUrl || "");
-    navigate(`/search/${safeImage}`);
+    // const safeImage = encodeURIComponent(imageDataUrl || "");
+    navigate("/search/image_result", {
+      state: { image: imageDataUrl },
+    });
     setImageDataUrl(null);
     handleCloseLens();
   };

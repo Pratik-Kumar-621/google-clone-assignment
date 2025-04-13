@@ -1,10 +1,10 @@
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import SearchResults from "../pages/SearchResults";
+import { useEffect } from "react";
 
-// Protected Route wrapper component
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, authLoading } = useAuth();
 
@@ -15,7 +15,6 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   return <>{children}</>;
 };
 
-// Public Route wrapper component (redirects to home if already logged in)
 const PublicRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, authLoading } = useAuth();
 
@@ -24,6 +23,16 @@ const PublicRoute = ({ children }: { children: React.ReactNode }) => {
   }
 
   return <>{children}</>;
+};
+
+const ErrorRedirect = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/", { replace: true });
+  }, [navigate]);
+
+  return null;
 };
 
 export const router = createBrowserRouter([
@@ -50,6 +59,7 @@ export const router = createBrowserRouter([
         <SearchResults />
       </ProtectedRoute>
     ),
+    errorElement: <ErrorRedirect />,
   },
   {
     path: "*",

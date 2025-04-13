@@ -5,7 +5,7 @@ import { IconButton } from "@mui/material";
 import SearchDialog from "./SearchDialog";
 import VoiceDialog from "./VoiceDialog";
 import LensDialog from "./LensDialog";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 const SearchBar = (props: {
   openSearch: boolean;
   openVoice: boolean;
@@ -48,6 +48,8 @@ const SearchBar = (props: {
   const handleCloseLens = () => {
     setOpenLens(false);
   };
+  const location = useLocation();
+  const image = location.state?.image;
   return (
     <div className="searchbar">
       <div
@@ -71,11 +73,11 @@ const SearchBar = (props: {
             <>
               {query ? (
                 <>
-                  {query.startsWith("data:image/") ? (
+                  {query.startsWith("image_result") ? (
                     <>
                       <img
                         style={{ width: "45px", margin: "-15px 0" }}
-                        src={query}
+                        src={image}
                         alt=""
                       />
                     </>
