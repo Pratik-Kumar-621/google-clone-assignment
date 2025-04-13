@@ -6,6 +6,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import CollectionsIcon from "@mui/icons-material/Collections";
+
 const CustomCameraCapture = ({
   openLens,
   handleCloseLens,
@@ -17,21 +18,21 @@ const CustomCameraCapture = ({
   const navigate = useNavigate();
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const streamRef = useRef<MediaStream | null>(null);
   const [facingMode, setFacingMode] = useState<"user" | "environment">(
     "environment"
   );
-  useEffect(() => {
-    let cameraStream: MediaStream | null = null;
 
+  useEffect(() => {
     const startCamera = async () => {
       try {
         if (openLens) {
           const stream = await navigator.mediaDevices.getUserMedia({
             video: { facingMode },
           });
+          streamRef.current = stream;
           if (videoRef.current) {
             videoRef.current.srcObject = stream;
-            cameraStream = stream;
             videoRef.current.play();
           }
         }
@@ -40,13 +41,14 @@ const CustomCameraCapture = ({
       }
     };
 
-    // Start the camera when openLens is true
-    startCamera();
+    if (openLens) {
+      startCamera();
+    }
 
     return () => {
-      if (cameraStream) {
-        const tracks = cameraStream.getTracks();
-        tracks.forEach((track) => track.stop());
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach((track) => track.stop());
+        streamRef.current = null;
       }
     };
   }, [openLens, facingMode]);
@@ -85,6 +87,7 @@ const CustomCameraCapture = ({
       reader.readAsDataURL(file);
     }
   };
+
   const handleSubmit = () => {
     const safeImage = encodeURIComponent(imageDataUrl || "");
     navigate(`/search/${safeImage}`);
@@ -103,7 +106,7 @@ const CustomCameraCapture = ({
 
       {openLens && (
         <div className="camera-input">
-          <video ref={videoRef} className="" playsInline muted autoPlay />\
+          <video ref={videoRef} className="" playsInline muted autoPlay />
           <div className="camera-input-overlay">
             <div className="camera-input-overlay-top-left" />
             <div className="camera-input-overlay-top-right" />
@@ -125,12 +128,14 @@ const CustomCameraCapture = ({
             accept="image/*"
             id="file_upload"
             onChange={handleFileUpload}
-            className=""
+            style={{ display: "none" }}
           />
         </div>
+
         <IconButton onClick={captureImage} className="camera-actions-capture">
           <CameraAltIcon />
         </IconButton>
+
         <IconButton
           onClick={() =>
             setFacingMode((prev) => (prev === "user" ? "environment" : "user"))
