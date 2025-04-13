@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import "../../../styles/camera.scss";
+import { IconButton } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
+import CameraAltIcon from "@mui/icons-material/CameraAlt";
+import CollectionsIcon from "@mui/icons-material/Collections";
 const CustomCameraCapture = ({
   openLens,
   handleCloseLens,
@@ -12,7 +17,9 @@ const CustomCameraCapture = ({
   const navigate = useNavigate();
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-
+  const [facingMode, setFacingMode] = useState<"user" | "environment">(
+    "environment"
+  );
   useEffect(() => {
     let cameraStream: MediaStream | null = null;
 
@@ -20,7 +27,7 @@ const CustomCameraCapture = ({
       try {
         if (openLens) {
           const stream = await navigator.mediaDevices.getUserMedia({
-            video: true,
+            video: { facingMode },
           });
           if (videoRef.current) {
             videoRef.current.srcObject = stream;
@@ -42,7 +49,7 @@ const CustomCameraCapture = ({
         tracks.forEach((track) => track.stop());
       }
     };
-  }, [openLens]);
+  }, [openLens, facingMode]);
 
   useEffect(() => {
     if (imageDataUrl) handleSubmit();
@@ -55,7 +62,6 @@ const CustomCameraCapture = ({
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
 
-    // Define capture area (you can customize this)
     const width = 300;
     const height = 300;
     const x = (video.videoWidth - width) / 2;
@@ -87,45 +93,46 @@ const CustomCameraCapture = ({
   };
 
   return (
-    <div className="p-6 max-w-lg mx-auto text-center">
-      <button onClick={handleCloseLens}>CLose</button>
-      <h2 className="text-2xl font-bold mb-4">Custom Camera UI</h2>
+    <div className="camera">
+      <div className="camera-icons">
+        <IconButton className="camera-icons-back">
+          <CloseIcon />
+        </IconButton>
+        <div className="camera-icons-heading">Google Lens</div>
+      </div>
 
-      {/* Display Camera */}
       {openLens && (
-        <div className="relative w-[300px] h-[300px] mx-auto border-4 border-blue-600 rounded overflow-hidden">
-          <video
-            ref={videoRef}
-            className="absolute top-0 left-0 w-full h-full object-cover"
-            playsInline
-            muted
-            autoPlay
-          />
-          <div className="absolute inset-0 border-4 border-white pointer-events-none" />
+        <div className="camera-input">
+          <video ref={videoRef} className="" playsInline muted autoPlay />
         </div>
       )}
 
-      {openLens && (
-        <div className="mt-4">
+      <div className="camera-actions">
+        <div className="camera-actions-upload">
+          <label htmlFor="file_upload">
+            <IconButton component={"span"}>
+              <CollectionsIcon />
+            </IconButton>
+          </label>
           <input
             type="file"
             accept="image/*"
+            id="file_upload"
             onChange={handleFileUpload}
-            className="px-4 py-2 bg-gray-600 text-white rounded"
+            className=""
           />
         </div>
-      )}
-
-      {/* Buttons for Capture and Retake */}
-      <div className="mt-4 flex justify-center gap-4">
-        {openLens && (
-          <button
-            onClick={captureImage}
-            className="px-4 py-2 bg-green-600 text-white rounded"
-          >
-            📸 Capture
-          </button>
-        )}
+        <IconButton onClick={captureImage} className="camera-actions-capture">
+          <CameraAltIcon />
+        </IconButton>
+        <IconButton
+          onClick={() =>
+            setFacingMode((prev) => (prev === "user" ? "environment" : "user"))
+          }
+          className="camera-actions-capture"
+        >
+          <ChangeCircleIcon />
+        </IconButton>
       </div>
 
       <canvas ref={canvasRef} style={{ display: "none" }} />

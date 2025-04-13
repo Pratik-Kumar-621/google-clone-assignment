@@ -45,6 +45,9 @@
   padding-bottom: 20px;
   background: variables.$background;
 }
+.imagesearch-drawer {
+  padding-bottom: 0 !important;
+}
 
 .textsearch-drawer {
   &-input {
