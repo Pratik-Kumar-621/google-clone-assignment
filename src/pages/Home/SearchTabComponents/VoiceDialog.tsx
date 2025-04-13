@@ -55,6 +55,9 @@ const VoiceDialog = ({ openVoice, handleOpenVoice, handleCloseVoice }: any) => {
     audio.onresult = (event: any) => {
       const transcript = event.results[0][0].transcript;
       setText(transcript);
+      console.log(transcript);
+
+      if (transcript === "") setRetry(true);
       setTimeout(() => {
         setIsRecording(false);
         handleCloseVoice();
@@ -107,7 +110,17 @@ const VoiceDialog = ({ openVoice, handleOpenVoice, handleCloseVoice }: any) => {
               </div>
             </>
           ) : (
-            <>{text}</>
+            <>
+              {text ? (
+                <>{text}</>
+              ) : (
+                <>
+                  {" "}
+                  Sorry but we are not able to capture your voice, please click
+                  on mike to try again
+                </>
+              )}
+            </>
           )}
         </div>
         {retry && (
@@ -118,11 +131,9 @@ const VoiceDialog = ({ openVoice, handleOpenVoice, handleCloseVoice }: any) => {
         )}
         <div
           className="voicesearch-drawer-mike"
-          style={{ cursor: retry ? "pointer" : "text" }}
+          style={{ cursor: "pointer" }}
           onClick={() => {
-            if (retry) {
-              startRecording();
-            }
+            startRecording();
           }}
         >
           <MicIcon sx={{ fontSize: "80px" }} />
