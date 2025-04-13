@@ -45,15 +45,29 @@
     &-heading {
       font-size: 30px;
     }
+    img {
+      border-radius: 10px;
+    }
   }
   &-content {
     &-all {
       padding: 0 20px 20px;
       &-head {
+        margin-bottom: 20px;
         display: flex;
         align-items: center;
         gap: 7px;
-        margin-bottom: 20px;
+        &-main {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+        }
+
+        img {
+          width: 240px;
+          border-radius: 10px;
+          margin-top: -17px;
+        }
       }
       &-list {
         display: flex;
@@ -100,10 +114,21 @@
     &-images {
       padding: 0 20px 20px;
       &-head {
+        margin-bottom: 20px;
         display: flex;
         align-items: center;
         gap: 7px;
-        margin-bottom: 20px;
+        &-main {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+        }
+
+        img {
+          width: 240px;
+          border-radius: 10px;
+          margin-top: -17px;
+        }
       }
       &-list {
         display: grid;
@@ -133,10 +158,21 @@
     &-news {
       padding: 0 20px 20px;
       &-head {
+        margin-bottom: 20px;
         display: flex;
         align-items: center;
         gap: 7px;
-        margin-bottom: 20px;
+        &-main {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+        }
+
+        img {
+          width: 240px;
+          border-radius: 10px;
+          margin-top: -17px;
+        }
       }
       &-list {
         &-item {

@@ -18,7 +18,7 @@ const LensDialog = (props: any) => {
       }}
     >
       <div className="imagesearch-drawer">
-        <CustomCameraCapture />
+        <CustomCameraCapture {...{ openLens, handleCloseLens }} />
       </div>
     </SwipeableDrawer>
   );

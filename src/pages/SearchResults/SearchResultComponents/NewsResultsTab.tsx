@@ -9,11 +9,28 @@ const NewsResultsTab = ({ query }: { query: string | undefined }) => {
   const [selectedNews, setSelectedNews] = useState<any>();
   return (
     <div className="searchresult-content-images">
-      <div className="searchresult-content-images-head">
-        <InfoOutlineIcon />
-        <span>
-          News for: <strong>{query}</strong>
-        </span>
+      <div
+        className="searchresult-content-all-head"
+        style={{
+          flexDirection: query?.startsWith("data:image/") ? "column" : "row",
+          alignItems: query?.startsWith("data:image/")
+            ? "flex-start"
+            : "center",
+        }}
+      >
+        <div className="searchresult-content-all-head-main">
+          <InfoOutlineIcon /> News for:{" "}
+        </div>
+        <div className="searchresult-content-all-head-content">
+          {query?.startsWith("data:image/") ? (
+            <>
+              <br />
+              <img src={query} />
+            </>
+          ) : (
+            query
+          )}
+        </div>
       </div>
       <div className="searchresult-content-news-list">
         {newsData.map((item) => {

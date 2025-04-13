@@ -46,11 +46,28 @@ const ImageResultsTab = (props: any) => {
   const [selectedImage, setSelectedImage] = useState<any>();
   return (
     <div className="searchresult-content-images">
-      <div className="searchresult-content-images-head">
-        <InfoOutlineIcon />{" "}
-        <span>
-          Images for: <strong>{query}</strong>
-        </span>
+      <div
+        className="searchresult-content-all-head"
+        style={{
+          flexDirection: query?.startsWith("data:image/") ? "column" : "row",
+          alignItems: query?.startsWith("data:image/")
+            ? "flex-start"
+            : "center",
+        }}
+      >
+        <div className="searchresult-content-all-head-main">
+          <InfoOutlineIcon /> Images for:{" "}
+        </div>
+        <div className="searchresult-content-all-head-content">
+          {query?.startsWith("data:image/") ? (
+            <>
+              <br />
+              <img src={query} />
+            </>
+          ) : (
+            query
+          )}
+        </div>
       </div>
       <div className="searchresult-content-images-list">
         {imageResults.map((item) => {

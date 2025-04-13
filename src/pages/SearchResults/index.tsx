@@ -8,6 +8,7 @@ const SearchResultsPage = () => {
   const [openVoice, setOpenVoice] = useState(false);
   const [openLens, setOpenLens] = useState(false);
   const { query } = params;
+
   return (
     <SearchResultsUI
       {...{

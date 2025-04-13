@@ -28,7 +28,8 @@ const SearchDialog = (props: SearchDialogProps) => {
   const params = useParams();
   const { query } = params;
 
-  const [searchInput, setSearchInput] = useState(query || "");
+  const value = query ? (query.startsWith("data:image/") ? "" : query) : "";
+  const [searchInput, setSearchInput] = useState(value);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const [filteredSearches, setFilteredSearches] = useState<string[]>([]);
   const [matchingSuggestions, setMatchingSuggestions] = useState<

@@ -80,11 +80,28 @@ const AllResultsTab = (props: any) => {
   const [selectedResult, setSelectedResult] = useState<any>();
   return (
     <div className="searchresult-content-all">
-      <div className="searchresult-content-all-head">
-        <InfoOutlineIcon />{" "}
-        <span>
-          Search results for: <strong>{query}</strong>
-        </span>
+      <div
+        className="searchresult-content-all-head"
+        style={{
+          flexDirection: query?.startsWith("data:image/") ? "column" : "row",
+          alignItems: query?.startsWith("data:image/")
+            ? "flex-start"
+            : "center",
+        }}
+      >
+        <div className="searchresult-content-all-head-main">
+          <InfoOutlineIcon /> Search results for:{" "}
+        </div>
+        <div className="searchresult-content-all-head-content">
+          {query?.startsWith("data:image/") ? (
+            <>
+              <br />
+              <img src={query} />
+            </>
+          ) : (
+            query
+          )}
+        </div>
       </div>
       <div className="searchresult-content-all-list">
         {searchResults.map((item) => {

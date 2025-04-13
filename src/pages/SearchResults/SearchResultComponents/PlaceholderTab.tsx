@@ -9,7 +9,7 @@ const PlaceholderTab = ({ tab }: { tab: { name: string; value: string } }) => {
         {tab.name} results tab for:
       </div>
       <br />
-      {query}
+      {query?.startsWith("data:image/") ? <img src={query} /> : query}
     </div>
   );
 };

@@ -71,7 +71,21 @@ const SearchBar = (props: {
             <>
               {query ? (
                 <>
-                  {query.length > 20 ? `${query.substring(0, 20)}...` : query}
+                  {query.startsWith("data:image/") ? (
+                    <>
+                      <img
+                        style={{ width: "45px", margin: "-15px 0" }}
+                        src={query}
+                        alt=""
+                      />
+                    </>
+                  ) : (
+                    <>
+                      {query.length > 20
+                        ? `${query.substring(0, 20)}...`
+                        : query}
+                    </>
+                  )}
                 </>
               ) : (
                 "Search Google"
