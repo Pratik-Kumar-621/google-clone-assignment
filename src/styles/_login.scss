@@ -3,7 +3,7 @@
 
 .login {
   @include mixins.flexCenter;
-  min-height: 100vh;
+  min-height: 90vh;
 
   button {
     color: variables.$text_color !important;
