@@ -62,8 +62,8 @@ const CustomCameraCapture = ({
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
 
-    const width = 300;
-    const height = 300;
+    const width = 250;
+    const height = 250;
     const x = (video.videoWidth - width) / 2;
     const y = (video.videoHeight - height) / 2;
 
