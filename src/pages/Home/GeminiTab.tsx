@@ -5,7 +5,7 @@ const GeminiTab = () => {
         <h1>Gemini Tab</h1>
       </div>
       <div className="gemini-content">
-        <p>This is the Gemini tab content.</p>
+        <p>Here you can add content for the gemini page.</p>
       </div>
     </div>
   );
