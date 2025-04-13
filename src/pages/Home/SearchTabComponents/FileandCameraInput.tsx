@@ -103,7 +103,13 @@ const CustomCameraCapture = ({
 
       {openLens && (
         <div className="camera-input">
-          <video ref={videoRef} className="" playsInline muted autoPlay />
+          <video ref={videoRef} className="" playsInline muted autoPlay />\
+          <div className="camera-input-overlay">
+            <div className="camera-input-overlay-top-left" />
+            <div className="camera-input-overlay-top-right" />
+            <div className="camera-input-overlay-bottom-left" />
+            <div className="camera-input-overlay-bottom-right" />
+          </div>
         </div>
       )}
 
