@@ -95,7 +95,7 @@ const CustomCameraCapture = ({
   return (
     <div className="camera">
       <div className="camera-icons">
-        <IconButton className="camera-icons-back">
+        <IconButton className="camera-icons-back" onClick={handleCloseLens}>
           <CloseIcon />
         </IconButton>
         <div className="camera-icons-heading">Google Lens</div>
