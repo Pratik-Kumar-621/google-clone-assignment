@@ -1,4 +1,5 @@
 import { SwipeableDrawer } from "@mui/material";
+import CustomCameraCapture from "./FileandCameraInput";
 
 const LensDialog = (props: any) => {
   const { openLens, handleOpenLens, handleCloseLens } = props;
@@ -17,8 +18,7 @@ const LensDialog = (props: any) => {
       }}
     >
       <div className="imagesearch-drawer">
-        <button onClick={handleCloseLens}>Close</button>
-        Lens SwipeableDrawer
+        <CustomCameraCapture />
       </div>
     </SwipeableDrawer>
   );
